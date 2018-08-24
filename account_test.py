@@ -129,6 +129,16 @@ class TestUserData(unittest.TestCase):
         userdata_found = UserData.display_userdata("Michel","twitter.com")
         self.assertEqual(userdata_found.website, test_userdata.website)
 
+    def test_userdata_exists(self):
+        '''
+        Testing if method for checking userdata works
+        '''
+        self.new_userdata.save_website()
+        test_userdata = UserData("Michel","twitter.com","yolo")
+        test_userdata.save_website()
+
+        userdata_exists = UserData.existing_userdata("Michel")
+        self.assertTrue(userdata_exists)
 
 
 

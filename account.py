@@ -72,5 +72,15 @@ class UserData:
             if password.username == username:
                 if password.website == website:
                     return password
+
     
+    @classmethod
+    def existing_userdata(cls, username):
+        '''
+        Checks if data exists in profile
+        '''
+        for userdata in cls.userdata_list:
+            if userdata.username == username:
+                return True
+                return False
 
