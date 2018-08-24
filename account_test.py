@@ -36,19 +36,30 @@ class TestAccount(unittest.TestCase):
 
     def test_save_account(self):
         '''
-        test_save_account test case to test if the credential object is saved into the account list
+        tests case to test if the credential object is saved into the account list
         '''
         self.new_account.save_account() #saving new account
         self.assertEqual(len(Credentials.account_list),1)
 
     def test_save_multiple_accounts(self):
         '''
-        test_save_multiple_accounts to check if we can solve multiple credential objects to our account_list
+        tests to check if we can solve multiple credential objects to our account_list
         '''
         self.new_account.save_account()
         test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru") #new account
         test_account.save_account()
         self.assertEqual(len(Credentials.account_list),2)
+
+    def test_delete_account(self):
+        '''
+        tests if we can remove an account from account_list
+        '''
+        self.new_account.save_account()
+        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru")
+        test_account.save_account()
+
+        self.new_account.delete_account() #Deleting a credential object
+        self.assertEqual(len(Credentials.account_list),1)
 
 
 

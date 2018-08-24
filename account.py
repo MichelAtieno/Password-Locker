@@ -17,3 +17,10 @@ class Credentials:
        '''
 
        Credentials.account_list.append(self)
+
+  def delete_account(self):
+      '''
+      deletes a saved account from account_list
+      '''
+
+      Credentials.account_list.remove(self)
