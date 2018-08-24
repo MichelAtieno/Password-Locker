@@ -47,7 +47,11 @@ def display_userdata():
     '''
     return UserData.display_userdata(username, website)
 
-
+def userdata_existing(userdata):
+    '''
+    Function that checks if userdata exists 
+    '''
+    return UserData.existing_userdata(userdata)
 
 def main():
     print("Hello Welcome to your account list. What is your name?")
