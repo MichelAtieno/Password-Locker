@@ -63,5 +63,12 @@ class UserData:
         self.website = website
         self.webpass = webpass
 
+    def save_website(self):
+        '''
+        create a method that saves website and password
+        '''
+
+        UserData.userdata_list.append(self)
+
    
 

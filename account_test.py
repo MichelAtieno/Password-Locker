@@ -111,6 +111,17 @@ class TestUserData(unittest.TestCase):
         self.assertEqual(self.new_userdata.website,"twitter.com")
         self.assertEqual(self.new_userdata.webpass,"yolo")
 
+    def test_save_website(self):
+        '''
+        tests case to test if website and webpass can be saved
+        '''
+
+        self.new_userdata.save_website() #saving new website
+        self.assertEqual(len(UserData.userdata_list),1)
+
+
+
+
     
 
 
