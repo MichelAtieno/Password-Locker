@@ -2,7 +2,7 @@ class Credentials:
   ''' 
   Class that generates new instances of accounts
   '''
-  account_list=[]
+  account_list=[] #Empty account_list 
 
   def __init__(self, first_name,last_name,email,password):
 
@@ -10,3 +10,10 @@ class Credentials:
       self.last_name = last_name
       self.email = email
       self.password = password
+
+  def save_account(self):
+       '''
+       save_account method saves credential objects into account_list
+       '''
+
+       Credentials.account_list.append(self)
