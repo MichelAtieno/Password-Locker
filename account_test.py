@@ -15,6 +15,14 @@ class TestAccount(unittest.TestCase):
         Set up method to run before each test cases.
         '''
         self.new_account = Credentials("Michel","Atieno","mishqamish@gmail.com","michel") #create new object
+    
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run
+        '''
+        Credentials.account_list = []
+
+
 
     def test_init(self):
         '''
@@ -32,6 +40,16 @@ class TestAccount(unittest.TestCase):
         '''
         self.new_account.save_account() #saving new account
         self.assertEqual(len(Credentials.account_list),1)
+
+    def test_save_multiple_accounts(self):
+        '''
+        test_save_multiple_accounts to check if we can solve multiple credential objects to our account_list
+        '''
+        self.new_account.save_account()
+        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru") #new account
+        test_account.save_account()
+        self.assertEqual(len(Credentials.account_list),2)
+
 
 
 if __name__ == '__main__':
