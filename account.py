@@ -36,14 +36,6 @@ class Credentials:
       for account in cls.account_list:
           if account.first_name == first_name and account.password == password:
               return account
-   
-  @classmethod 
-  def display_accounts(cls):
-        '''
-        method that returns the account list
-        '''
-       
-        return cls.account_list
   
  # @classmethod
   #def copy_email(cls, first_name, password):
@@ -58,8 +50,9 @@ class UserData:
 
     userdata_list = []
 
-    def __init__ (self,website,webpass):
+    def __init__ (self,username,website,webpass):
 
+        self.username = username
         self.website = website
         self.webpass = webpass
 
@@ -70,5 +63,14 @@ class UserData:
 
         UserData.userdata_list.append(self)
 
-   
+    @classmethod 
+    def display_userdata(cls, username, website):
+        '''
+        displays passwords from user
+        '''
+        for password in cls.userdata_list:
+            if password.username == username:
+                if password.website == website:
+                    return password
+    
 

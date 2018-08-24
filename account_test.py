@@ -75,13 +75,6 @@ class TestAccount(unittest.TestCase):
 
         self.assertEqual(found_account.email, test_account.email)
 
-    def test_display_all_contacts(self):
-        '''
-        method that returns a list of all contacts saved
-        '''
-
-        self.assertEqual(Credentials.display_accounts(),Credentials.account_list)
-
    # def test_copy_email(self):
     #    '''
      #   Test to confirm email-address from a found account
@@ -99,8 +92,13 @@ class TestUserData(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_userdata = UserData("twitter.com","yolo")
+        self.new_userdata = UserData("Michel","twitter.com","yolo")
 
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run
+        '''
+        UserData.userdata_list = []
     
     def test_init(self):
 
@@ -108,6 +106,7 @@ class TestUserData(unittest.TestCase):
         Test class that defines test case for website and logging in
         '''
 
+        self.assertEqual(self.new_userdata.username,"Michel")
         self.assertEqual(self.new_userdata.website,"twitter.com")
         self.assertEqual(self.new_userdata.webpass,"yolo")
 
@@ -118,6 +117,17 @@ class TestUserData(unittest.TestCase):
 
         self.new_userdata.save_website() #saving new website
         self.assertEqual(len(UserData.userdata_list),1)
+
+    def test_display_userdata(self):
+        '''
+        method that returns a list of all websites saved
+        '''
+        self.new_userdata.save_website()
+        test_userdata = UserData("Michel","twitter.com","yolo")
+        test_userdata.save_website()
+
+        userdata_found = UserData.display_userdata("Michel","twitter.com")
+        self.assertEqual(userdata_found.website, test_userdata.website)
 
 
 
