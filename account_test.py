@@ -1,5 +1,6 @@
 import unittest # Importing the unittest module
 from account import Credentials # Importing the credentials class
+import pyperclip
 
 class TestAccount(unittest.TestCase):
 
@@ -73,6 +74,24 @@ class TestAccount(unittest.TestCase):
         found_account = Credentials.authenticate_account("Jerusha","jeru")
 
         self.assertEqual(found_account.email, test_account.email)
+
+
+    def test_display_all_contacts(self):
+        '''
+        method that returns a list of all contacts saved
+        '''
+
+        self.assertEqual(Credentials.display_accounts(),Credentials.account_list)
+
+   # def test_copy_email(self):
+    #    '''
+     #   Test to confirm email-address from a found account
+      #  '''
+
+       # self.new_account.save_account()
+        #Credentials.copy_email("jeruauma@gmail.com") 
+
+        #self.assertEqual(self.new_account.email, pyperclip.paste())   
 
 
 

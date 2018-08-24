@@ -1,3 +1,5 @@
+import pyperclip
+
 class Credentials: 
   ''' 
   Class that generates new instances of accounts
@@ -34,3 +36,16 @@ class Credentials:
       for account in cls.account_list:
           if account.first_name == first_name and account.password == password:
               return account
+   
+  @classmethod 
+  def display_accounts(cls):
+       '''
+       method that returns the account list
+       '''
+       
+       return cls.account_list
+
+ # @classmethod
+  #def copy_email(cls, first_name, password):
+   #     contact_found = Credentials.authenticate_account(first_name, password)
+    #    pyperclip.copy(accont_found.email)
