@@ -61,6 +61,19 @@ class TestAccount(unittest.TestCase):
         self.new_account.delete_account() #Deleting a credential object
         self.assertEqual(len(Credentials.account_list),1)
 
+    def test_auhenticate(self):
+        '''
+        test to check if we can restrict access by password authentication
+        '''
+
+        self.new_account.save_account()
+        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru")
+        test_account.save_account()
+
+        found_account = Credentials.authenticate_account("Jerusha","jeru")
+
+        self.assertEqual(found_account.email, test_account.email)
+
 
 
 if __name__ == '__main__':

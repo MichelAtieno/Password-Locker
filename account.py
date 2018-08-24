@@ -24,3 +24,13 @@ class Credentials:
       '''
 
       Credentials.account_list.remove(self)
+
+  @classmethod
+  def authenticate_account(cls, first_name, password):
+      '''
+      Method that verifies user and password
+      '''
+
+      for account in cls.account_list:
+          if account.first_name == first_name and account.password == password:
+              return account
