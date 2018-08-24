@@ -26,11 +26,27 @@ def authenticate_account(first_name, password):
     '''
     account.authenticate_account()
 
-def display_accounts():
+
+def new_userdata(username, website, webpass):
     '''
-    Function that returns all the saved contacts
+    Function that creates new userdata
     '''
-    return Credentials.display_accounts()
+    new_userdata = UserData(username, website, webpass)
+    return new_userdata
+
+def save_userdata(userdata):
+    '''
+    Function that saves new userdata
+    '''
+    userdata.save_website()
+
+
+def display_userdata():
+    '''
+    Function that displays user data
+    '''
+    return UserData.display_userdata(username, website)
+
 
 
 def main():
