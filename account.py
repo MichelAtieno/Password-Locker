@@ -39,13 +39,29 @@ class Credentials:
    
   @classmethod 
   def display_accounts(cls):
-       '''
-       method that returns the account list
-       '''
+        '''
+        method that returns the account list
+        '''
        
-       return cls.account_list
-
+        return cls.account_list
+  
  # @classmethod
   #def copy_email(cls, first_name, password):
    #     contact_found = Credentials.authenticate_account(first_name, password)
     #    pyperclip.copy(accont_found.email)
+
+
+class UserData:
+    '''
+    Class that holds user and website information
+    '''
+
+    userdata_list = []
+
+    def __init__ (self,website,webpass):
+
+        self.website = website
+        self.webpass = webpass
+
+   
+

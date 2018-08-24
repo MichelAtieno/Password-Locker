@@ -1,5 +1,5 @@
 import unittest # Importing the unittest module
-from account import Credentials # Importing the credentials class
+from account import Credentials,  UserData # Importing the credentials class
 import pyperclip
 
 class TestAccount(unittest.TestCase):
@@ -75,7 +75,6 @@ class TestAccount(unittest.TestCase):
 
         self.assertEqual(found_account.email, test_account.email)
 
-
     def test_display_all_contacts(self):
         '''
         method that returns a list of all contacts saved
@@ -92,7 +91,27 @@ class TestAccount(unittest.TestCase):
         #Credentials.copy_email("jeruauma@gmail.com") 
 
         #self.assertEqual(self.new_account.email, pyperclip.paste())   
+    
+class TestUserData(unittest.TestCase):
 
+    def setUp(self):
+    
+        '''
+        Set up method to run before each test cases.
+        '''
+        self.new_userdata = UserData("twitter.com","yolo")
+
+    
+    def test_init(self):
+
+        '''
+        Test class that defines test case for website and logging in
+        '''
+
+        self.assertEqual(self.new_userdata.website,"twitter.com")
+        self.assertEqual(self.new_userdata.webpass,"yolo")
+
+    
 
 
 if __name__ == '__main__':
