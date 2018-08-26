@@ -15,7 +15,7 @@ class TestAccount(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_account = Credentials("Michel","Atieno","mishqamish@gmail.com","michel") #create new object
+        self.new_account = Credentials(1,"Michel","Atieno","mishqamish@gmail.com","michel") #create new object
     
     def tearDown(self):
         '''
@@ -29,7 +29,7 @@ class TestAccount(unittest.TestCase):
         '''
         test_init test case to test if the object is initialized properly
         '''
-
+        self.assertEqual(self.new_account.user_id,1)
         self.assertEqual(self.new_account.first_name,"Michel")
         self.assertEqual(self.new_account.last_name,"Atieno")
         self.assertEqual(self.new_account.email,"mishqamish@gmail.com") 
@@ -47,7 +47,7 @@ class TestAccount(unittest.TestCase):
         tests to check if we can solve multiple credential objects to our account_list
         '''
         self.new_account.save_account()
-        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru") #new account
+        test_account = Credentials(1,"Jerusha","Auma","jeruauma@gmail.com", "jeru") #new account
         test_account.save_account()
         self.assertEqual(len(Credentials.account_list),2)
 
@@ -56,7 +56,7 @@ class TestAccount(unittest.TestCase):
         tests if we can remove an account from account_list
         '''
         self.new_account.save_account()
-        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru")
+        test_account = Credentials(1,"Jerusha","Auma","jeruauma@gmail.com", "jeru")
         test_account.save_account()
 
         self.new_account.delete_account() #Deleting a credential object
@@ -68,12 +68,11 @@ class TestAccount(unittest.TestCase):
         '''
 
         self.new_account.save_account()
-        test_account = Credentials("Jerusha","Auma","jeruauma@gmail.com", "jeru")
+        test_account = Credentials(1,"Jerusha","Auma","jeruauma@gmail.com", "jeru")
         test_account.save_account()
 
         found_account = Credentials.authenticate_account("Jerusha","jeru")
-
-        self.assertEqual(found_account.email, test_account.email)
+        self.assertEqual(found_account.user_id, test_account.user_id)
 
    # def test_copy_email(self):
     #    '''
@@ -92,7 +91,7 @@ class TestUserData(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_userdata = UserData("Michel","twitter.com","yolo")
+        self.new_userdata = UserData(1,"Michel","twitter.com","yolo")
 
     def tearDown(self):
         '''
@@ -105,7 +104,7 @@ class TestUserData(unittest.TestCase):
         '''
         Test class that defines test case for website and logging in
         '''
-
+        self.assertEqual(self.new_userdata.id, 1)
         self.assertEqual(self.new_userdata.username,"Michel")
         self.assertEqual(self.new_userdata.website,"twitter.com")
         self.assertEqual(self.new_userdata.webpass,"yolo")
@@ -123,10 +122,10 @@ class TestUserData(unittest.TestCase):
         method that returns a list of all websites saved
         '''
         self.new_userdata.save_website()
-        test_userdata = UserData("Michel","twitter.com","yolo")
+        test_userdata = UserData(1,"Michel","twitter.com","yolo")
         test_userdata.save_website()
 
-        userdata_found = UserData.display_userdata("Michel","twitter.com")
+        userdata_found = UserData.display_userdata(1,"Michel")
         self.assertEqual(userdata_found.website, test_userdata.website)
 
     def test_userdata_exists(self):
@@ -134,7 +133,7 @@ class TestUserData(unittest.TestCase):
         Testing if method for checking userdata works
         '''
         self.new_userdata.save_website()
-        test_userdata = UserData("Michel","twitter.com","yolo")
+        test_userdata = UserData(1,"Michel","twitter.com","yolo")
         test_userdata.save_website()
 
         userdata_exists = UserData.existing_userdata("Michel")

@@ -6,8 +6,9 @@ class Credentials:
   '''
   account_list=[] #Empty account_list 
 
-  def __init__(self, first_name,last_name,email,password):
-
+  def __init__(self,user_id,first_name,last_name,email,password):
+      
+      self.user_id = user_id
       self.first_name = first_name
       self.last_name = last_name
       self.email = email
@@ -51,8 +52,9 @@ class UserData:
 
     userdata_list = []
 
-    def __init__ (self,username,website,webpass):
+    def __init__ (self,id,username,website,webpass):
 
+        self.id = id
         self.username = username
         self.website = website
         self.webpass = webpass
@@ -65,13 +67,13 @@ class UserData:
         UserData.userdata_list.append(self)
 
     @classmethod 
-    def display_userdata(cls, username, website):
+    def display_userdata(cls, id, username):
         '''
         displays passwords from user
         '''
         for password in cls.userdata_list:
-            if password.username == username:
-                if password.website == website:
+            if password.id == id:
+                if password.username == username:
                     return password
 
     
