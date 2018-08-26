@@ -171,6 +171,25 @@ def main():
                          print('No passwords')
                          print('-'*25)
 
+                    elif new_user_input == 'lo':
+                        print('\n')
+                        print(f'Bye {user_signin.first_name}!')
+                        print('-'*25)
+                        break
+                    else:
+                         print('Invalid Entry')
+                         print('-'*25)
+
+            elif selected_type == 'ex':
+                print('\n')
+                print(f'Bye')
+                print('-'*25)
+                break
+
+            else:
+                print('Invalid entry')
+                print('-'*25)
+
 
 
 
