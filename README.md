@@ -9,26 +9,36 @@
 
  As user navigates the application, they can do the following:
  <ul>
-  <li>-ca - Create new account</li>
-  <li>-si - Sign in</li>
-  <li>-cp - Create Password</li>
-  <li>-sp - Show Passwords</li>
-  <li>-cop - Copy Passwords to clipboard using index position of created passwords</li>
-  <li>-lo - Log out of account</li>
-  <li>-ex - exit application</li>
+  <li>ca - Create new account</li>
+  <li>si - Sign in to account</li>
+  <li>cp - Create Password</li>
+  <li>sp - Show Passwords</li>
+  <li>cop - Copy Passwords to clipboard using index position of created passwords</li>
+  <li>lo - Log out of account</li>
+  <li>ex - exit application</li>
  </ul>
 
 
 # Technologies Used
- -Python3.6
- -Git
+<ul>
+ <li>Python3.6</li>
+ <li>Git</li>
+</ul>
+
+ 
 
 
 # Installations required
-  -clone repository
-  -Install Python3.6
-  -Install Pyperclip
-  -Run 'python3.6 run.py' on terminal
+<ul>
+  <li>clone repository</li>
+  <li>Install Python3.6</li>
+  <li>Install Pyperclip</li>
+  <li>Run 'python3.6 run.py' on terminal</li>
+</ul>
+  
+  
+  
+  
 
 # Bugs
 No bugs found. If found, send email to mishqamish@gmail.com.
