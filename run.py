@@ -189,13 +189,6 @@ def main():
             else:
                 print('Invalid entry')
                 print('-'*25)
-
-
-
-
-
-
-
                     
 
     
