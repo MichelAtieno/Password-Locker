@@ -93,10 +93,10 @@ def main():
             new_last_name = input('Account-Last-Name: ').strip()
 
             print('Enter email: ')
-            new_email = input('Account-Email: ').strip()
+            new_email = input(' ').strip()
 
             print('Enter password: ')
-            pass_word = input('Password: ').strip()
+            pass_word = input(' ').strip()
 
             print('\n')
             save_account(create_account(my_id,new_first_name,new_last_name,new_email,pass_word))
@@ -109,7 +109,7 @@ def main():
 
         elif selected_type == 'si':
             print('Enter Account-Name and Password to continue:')
-            user_login = input('Account-Name: ').strip()
+            user_login = input('Account-First-Name: ').strip()
             user_webpass = input('Password: ').strip()
             user_signin = authenticate_account(user_login,user_webpass)
             if user_signin == 0:
@@ -125,12 +125,11 @@ def main():
                     new_user_input = input().lower()
                     if new_user_input == 'cp':
                         print('-'*25)
-                        print('Add Website and Password: ')
                         print('Enter Website: ')
                         new_website = input()
 
                         print('Length of Password: ')
-                        password_length = int(input('Password Length: '))
+                        password_length = int(input(' '))
                         new_webpass = webpass_generator(password_length)
                         new_user_id = user_signin.user_id
                         save_userdata(my_new_userdata(new_user_id,user_input[new_user_id],new_website,new_webpass))
