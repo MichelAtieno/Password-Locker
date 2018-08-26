@@ -117,7 +117,7 @@ def main():
                 print('\n')
                 print('Welcome {user-signin.first_name}')
                 while True:
-                    print('Type:\n cp - Create Password sp- Show Passwords cp - Copy Passwoyd to clipboard\n lo - Log out')
+                    print('Type:\n cp - Create Password sp- Show Passwords cop - Copy Password to clipboard\n lo - Log out')
                     new_user_input = input().lower()
                     if new_user_input == 'cp':
                         print('-'*25)
@@ -127,12 +127,6 @@ def main():
                         print('Length of Password: ')
                         password_length = int(input('Password Length: '))
                         new_webpass = webpass_generator(password_length)
-
-                        #def webpass_generator(size=password_length, chars=string.ascii_uppercase + string.digits + string.ascii_lowercase):
-                        #    pwd = ''.join(random.choice(chars) for _ in range(size))
-                         #   return pwd
-
-                        #new_webpass = webpass_generator()
 
                         new_user_id = user_signin.user_id
                         save_userdata(my_new_userdata(new_user_id,user_input[new_user_id],new_website,new_webpass))
@@ -151,9 +145,32 @@ def main():
                              get_pass = display_userdata(user_signin.user_id,my_user_data)
                              print(f'{my_user_data+1}. {get_pass.website} ---- {get_pass.webpass}')
                              my_user_data+=1
+                    
 
                          print('\n Enter new command')
                          print('-'*25)
+                     else:
+                          print('\n You have no registered accounts with passwords')
+                          print('-'*25)
+
+                    elif new_user_input == 'cop':
+                     if userdata_existing(user_signin.user_id):
+                         print('Enter index of password you want to copy:')
+                         show_index = int(input('Enter index: '))-1
+                         if show_index >= user_input[user_signin.user_id] or show_index<0:
+                             print('\n')
+                             print(f'{show_index+1} is invalid')
+                             print('Enter sp to verify index of password')
+                             print('-'*25)
+                         elif show_index <user_input[user_signin.user_id]:
+                                 copy_pass(user_signin.user_id,show_index)
+                                 print('\n')
+                                 print(f'The password for {show_index+1} has been copied')
+                                 print('-'*25)
+                     else:
+                         print('No passwords')
+                         print('-'*25)
+
 
 
 
