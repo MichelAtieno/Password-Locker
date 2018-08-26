@@ -13,19 +13,19 @@ def save_account(account):
     '''
     Function to save account
     '''
-    contact.save_account()
+    account.save_account()
 
 def del_account(account):
     '''
     Function to delete an account
     '''
-    contact.delete_account()
+    account.delete_account()
 
 def authenticate_account(first_name, password):
     '''
-    Function to delete a contact
+    Function to authenticate account
     '''
-    account.authenticate_account()
+    return Credentials.authenticate_account(first_name, password)
 
 
 def new_userdata(username, website, webpass):
@@ -77,7 +77,7 @@ def main():
 
     print('\n')
     print("Hello Welcome to Password-locker")
-    print("-"*40)
+    print("-"*25)
     while True:
         print('Type:\n ca to create new account\n si to sign-in\n ex to exit')
         selected_type = input().lower().strip()
@@ -92,7 +92,42 @@ def main():
             user_id+=1 
             print(f'Account {user_name} has been created. \n Login to Continue')
             user_input.append(0)
-            print('-'*25)   
+            print('-'*25)
+
+        elif selected_type == 'si':
+            print('Enter Account-Name and Password to continue:')
+            user_login = input('Account-Name: ')
+            user_webpass = input('Password: ')
+            user_signin = authenticate_account(user_login,user_webpass)
+            if user_signin == 0:
+                print('\n')
+                print('Invalid Account-Name and/or Password')
+                print('-'*25)
+
+            elif user_signin != 0:
+                print('\n')
+                print('Welcome {user-signin.first_name}')
+                while True:
+                    print('Type:\n cp - Create Password sp- Show Passwords cp - Copy Passwoyd to clipboard\n lo - Log out')
+                    new_user_input = input().lower()
+                    if new_user_input == 'cp':
+                        print('Add Website and Password: ')
+                        print('Enter Website: ')
+                        new_website = input()
+                        print('Length of Password: ')
+                        password_length = int(input('Password Length: '))
+                        new_webpass = webpass_generator(password_length)
+
+                        new_username = user_signin.identity
+                        add_userdata(new_user_data(new_username,user_input[new_username],new_website,new_webpass))
+                        user_input[new_username]=user_input[new_username]+1
+                        print('\n')
+                        print(f'Your password for {new_website} is {new_webpass}')
+
+
+
+                    
+
     
 if __name__ == '__main__':
 

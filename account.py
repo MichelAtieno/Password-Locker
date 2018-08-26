@@ -36,6 +36,7 @@ class Credentials:
       for account in cls.account_list:
           if account.first_name == first_name and account.password == password:
               return account
+      return 0
   
  # @classmethod
   #def copy_email(cls, first_name, password):
