@@ -74,16 +74,6 @@ class TestAccount(unittest.TestCase):
         found_account = Credentials.authenticate_account("Jerusha","jeru")
         self.assertEqual(found_account.user_id, test_account.user_id)
 
-   # def test_copy_email(self):
-    #    '''
-     #   Test to confirm email-address from a found account
-      #  '''
-
-       # self.new_account.save_account()
-        #Credentials.copy_email("jeruauma@gmail.com") 
-
-        #self.assertEqual(self.new_account.email, pyperclip.paste())   
-    
 class TestUserData(unittest.TestCase):
 
     def setUp(self):

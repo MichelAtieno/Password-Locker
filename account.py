@@ -38,12 +38,6 @@ class Credentials:
           if account.first_name == first_name and account.password == password:
               return account
       return 0
-  
- # @classmethod
-  #def copy_email(cls, first_name, password):
-   #     contact_found = Credentials.authenticate_account(first_name, password)
-    #    pyperclip.copy(accont_found.email)
-
 
 class UserData:
     '''
