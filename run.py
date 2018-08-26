@@ -28,11 +28,11 @@ def authenticate_account(first_name, password):
     return Credentials.authenticate_account(first_name, password)
 
 
-def new_userdata(username, website, webpass):
+def new_userdata(username,website, webpass):
     '''
     Function that creates new userdata
     '''
-    new_userdata = UserData(username, website, webpass)
+    new_userdata = UserData(website, webpass)
     return new_userdata
 
 def save_userdata(userdata):
@@ -53,19 +53,6 @@ def userdata_existing(userdata):
     Function that checks if userdata exists 
     '''
     return UserData.existing_userdata(userdata)
-    
-def webpass_generator(count):
-    '''
-    Function that generates password
-    '''
-    webpass_list=[]
-    round = 1
-    while round <= count:
-        gen_password = random.choice(string.ascii_uppercase + string.digits + string.ascii_lowercase)
-        webpass_list.append(gen_password)
-        round+=1
-    return ''.join(webpass_list)
-
 
 def main():
     '''
@@ -83,14 +70,17 @@ def main():
         selected_type = input().lower().strip()
         if selected_type == 'ca':
             print('Create Account:'+'\n'+'-'*25+'\n Enter Account-Name:')
-            user_name = input('Account-Name: ')
+            new_first_name = input('Account-First-Name: ')
+            new_last_name = input('Account-Last-Name: ')
+            print('Enter email: ')
+            new_email = input('Account-Email: ')
             print('Enter password: ')
             pass_word = input('Password: ')
 
             print('\n')
-            new_user(created_account(user_id,user_name,pass_word))
+            save_account(create_account(new_first_name,new_last_name,new_email,pass_word))
             user_id+=1 
-            print(f'Account {user_name} has been created. \n Login to Continue')
+            print(f'Account {new_first_name} {new_last_name} has been created. \n Login to Continue')
             user_input.append(0)
             print('-'*25)
 
@@ -116,13 +106,16 @@ def main():
                         new_website = input()
                         print('Length of Password: ')
                         password_length = int(input('Password Length: '))
-                        new_webpass = webpass_generator(password_length)
 
-                        new_username = user_signin.identity
-                        add_userdata(new_user_data(new_username,user_input[new_username],new_website,new_webpass))
-                        user_input[new_username]=user_input[new_username]+1
+                        def webpass_generator(size=password_length, chars=string.ascii_uppercase + string.digits + string.ascii_lowercase):
+                            pwd = ''.join(random.choice(chars) for _ in range(size))
+                            return pwd
+
+                        new_webpass = webpass_generator()
+
+                        save_account(new_userdata(username,new_website,new_webpass))
                         print('\n')
-                        print(f'Your password for {new_website} is {new_webpass}')
+                        print(f'Your password is {new_webpass}')
 
 
 
