@@ -68,7 +68,7 @@ def webpass_generator(count):
     webpass_list = []
     round = 1
     while round<=count:
-        gen_password = random.choice(string.ascii_lowercase + string.digits + string.ascii_uppercase)
+        gen_password = random.choice(string.ascii_lowercase + string.digits + string.ascii_uppercase + string.ascii_letters)
         webpass_list.append(gen_password)
         round+=1
     return ''.join(webpass_list)
@@ -77,13 +77,13 @@ def main():
     '''
     Executing Function
     '''
-    my_id=0
+    new_id=0
     #id = 0
     user_input = []
 
     print('\n')
-    print("Hello Welcome to Password-locker")
-    print("-"*25)
+    print('Hello Welcome to Password-locker')
+    print('-'*25)
     while True:
         print('Type:\n ca to create new account\n si to sign-in\n ex to exit')
         selected_type = input().lower().strip()
@@ -99,8 +99,8 @@ def main():
             pass_word = input(' ').strip()
 
             print('\n')
-            save_account(create_account(my_id,new_first_name,new_last_name,new_email,pass_word))
-            my_id+=1
+            save_account(create_account(new_id,new_first_name,new_last_name,new_email,pass_word))
+            new_id+=1
 
             print(f'Account {new_first_name} {new_last_name} has been created. \n Login to Continue')
             user_input.append(0)
