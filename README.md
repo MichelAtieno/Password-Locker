@@ -8,13 +8,15 @@
  # Behaviors
 
  As user navigates the application, they can do the following:
- -ca - Create new account 
- -si - Sign in
- -cp - Create Password
- -sp - Show Passwords
- -cop - Copy Passwords to clipboard using index position of created passwords
- -lo - Log out of account
- -ex - exit application
+ <ul>
+  <li>-ca - Create new account</li>
+  <li>-si - Sign in</li>
+  <li>-cp - Create Password</li>
+  <li>-sp - Show Passwords</li>
+  <li>-cop - Copy Passwords to clipboard using index position of created passwords</li>
+  <li>-lo - Log out of account</li>
+  <li>-ex - exit application</li>
+ </ul>
 
 
 # Technologies Used
