@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 from account import Credentials
+import string, random, time
 
 def create_account(first_name,last_name,email,password):
     '''
@@ -52,75 +53,47 @@ def userdata_existing(userdata):
     Function that checks if userdata exists 
     '''
     return UserData.existing_userdata(userdata)
+    
+def webpass_generator(count):
+    '''
+    Function that generates password
+    '''
+    webpass_list=[]
+    round = 1
+    while round <= count:
+        gen_password = random.choice(string.ascii_uppercase + string.digits + string.ascii_lowercase)
+        webpass_list.append(gen_password)
+        round+=1
+    return ''.join(webpass_list)
+
 
 def main():
-    print("Hello Welcome to your account list. What is your name?")
-    first_name = input()
+    '''
+    Executing Function
+    '''
+    user_id=0
 
-    print(f"Hello {first_name}. what would you like to do?")
+    user_input = []
+
     print('\n')
-
+    print("Hello Welcome to Password-locker")
+    print("-"*40)
     while True:
-                    print("Use these short codes : ca - create a new account, da - display account, aa -authenticate account, ex -exit the account list ")
+        print('Type:\n ca to create new account\n si to sign-in\n ex to exit')
+        selected_type = input().lower().strip()
+        if selected_type == 'ca':
+            print('Create Account:'+'\n'+'-'*25+'\n Enter Account-Name:')
+            user_name = input('Account-Name: ')
+            print('Enter password: ')
+            pass_word = input('Password: ')
 
-                    short_code = input().lower()
-
-                    if short_code == 'ca':
-                            print("New Account")
-                            print("-"*10)
-
-                            print ("First name ....")
-                            first_name = input()
-
-                            print("Last name ...")
-                            last_name = input()
-
-                            print("Email address ...")
-                            email = input()
-
-                            print("Password ...")
-                            password = input()
-
-
-                            save_account(create_account(first_name,last_name,email,password)) # create and save new contact.
-                            print ('\n')
-                            print(f"New Account {first_name} {last_name} created")
-                            print ('\n')
-
-                    elif short_code == 'da':
-
-                            if display_accounts():
-                                    print("Here is a list of all your accounts")
-                                    print('\n')
-
-                                    for account in display_accounts():
-                                            print(f"{account.first_name} {account.last_name} .....{account.email}")
-
-                                    print('\n')
-                            else:
-                                    print('\n')
-                                    print("You dont seem to have any accounts saved yet")
-                                    print('\n')
-
-                    elif short_code == 'aa':
-
-                            print("Enter the account you want to search for")
-
-                            search_first_name = input()
-                            if check_existing_accounts(search_first_name):
-                                    search_account = find_account(search_first_name)
-                                    print(f"{search_account.first_name} {search_account.last_name}")
-                                    print('-' * 20)
-                                    print(f"Email address.......{search_contact.email}")
-                            else:
-                                    print("That accountt does not exist")
-
-                    elif short_code == "ex":
-                            print("Bye .......")
-                            break
-                    else:
-                            print("I really didn't get that. Please use the short codes")
-
+            print('\n')
+            new_user(created_account(user_id,user_name,pass_word))
+            user_id+=1 
+            print(f'Account {user_name} has been created. \n Login to Continue')
+            user_input.append(0)
+            print('-'*25)   
+    
 if __name__ == '__main__':
 
     main()
