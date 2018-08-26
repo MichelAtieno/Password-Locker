@@ -55,7 +55,7 @@ class UserData:
     def __init__ (self,id,username,website,webpass):
 
         self.id = id
-        self.username = username
+        self.username = username 
         self.website = website
         self.webpass = webpass
 
@@ -67,23 +67,28 @@ class UserData:
         UserData.userdata_list.append(self)
 
     @classmethod 
-    def display_userdata(cls, id, username):
+    def display_userdata(cls, number, count):
         '''
         displays passwords from user
         '''
         for password in cls.userdata_list:
-            if password.id == id:
-                if password.username == username:
+            if password.id == number:
+                if password.username == count:
                     return password
 
     
     @classmethod
-    def existing_userdata(cls, username):
+    def existing_userdata(cls, number):
         '''
         Checks if data exists in profile
         '''
         for userdata in cls.userdata_list:
-            if userdata.username == username:
+            if userdata.id == number:
                 return True
                 return False
+
+    @classmethod 
+    def copy_pass(cls,number,count):
+        found_password = UserData.display_userdata(number,count)
+        pyperclip.copy(found_password.webpass)
 

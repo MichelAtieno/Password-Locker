@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 from account import Credentials
+from account import UserData
 import string, random, time
 
 def create_account(user_id,first_name,last_name,email,password):
@@ -28,11 +29,11 @@ def authenticate_account(first_name, password):
     return Credentials.authenticate_account(first_name, password)
 
 
-def new_userdata(id,username,website, webpass):
+def my_new_userdata(newuser_id, username, website, webpass):
     '''
     Function that creates new userdata
     '''
-    new_userdata = UserData(id, username, website, webpass)
+    new_userdata = UserData(newuser_id, username, website, webpass)
     return new_userdata
 
 def save_userdata(userdata):
@@ -42,11 +43,11 @@ def save_userdata(userdata):
     userdata.save_website()
 
 
-def display_userdata():
+def display_userdata(userdata, number):
     '''
     Function that displays user data
     '''
-    return UserData.display_userdata(username, website)
+    return UserData.display_userdata(userdata, number)
 
 def userdata_existing(userdata):
     '''
@@ -54,13 +55,19 @@ def userdata_existing(userdata):
     '''
     return UserData.existing_userdata(userdata)
 
-def webpass_generator(id):
+def copy_pass(number, count):
+    '''
+    Function that copies password to clipboard
+    '''
+    UserData.copy_pass(number, count)
+
+def webpass_generator(count):
     '''
     Function that generates password
     '''
     webpass_list = []
     round = 1
-    while round<=id:
+    while round<=count:
         gen_password = random.choice(string.ascii_lowercase + string.digits + string.ascii_uppercase)
         webpass_list.append(gen_password)
         round+=1
@@ -113,11 +120,13 @@ def main():
                     print('Type:\n cp - Create Password sp- Show Passwords cp - Copy Passwoyd to clipboard\n lo - Log out')
                     new_user_input = input().lower()
                     if new_user_input == 'cp':
+                        print('-'*25)
                         print('Add Website and Password: ')
                         print('Enter Website: ')
                         new_website = input()
                         print('Length of Password: ')
                         password_length = int(input('Password Length: '))
+                        new_webpass = webpass_generator(password_length)
 
                         #def webpass_generator(size=password_length, chars=string.ascii_uppercase + string.digits + string.ascii_lowercase):
                         #    pwd = ''.join(random.choice(chars) for _ in range(size))
@@ -125,20 +134,29 @@ def main():
 
                         #new_webpass = webpass_generator()
 
-                        new_user_id = user-sign_in.user_id
-                        save_userdata(new_userdata(new_user_id,user_input[new_user_id],new_website,new_webpass))
+                        new_user_id = user_signin.user_id
+                        save_userdata(my_new_userdata(new_user_id,user_input[new_user_id],new_website,new_webpass))
                         user_input[new_user_id] = user_input[new_user_id]+1
                         
-                        print('\n')
-                        print(f'Your password is {new_webpass}')
+                        print(f'Your password for {new_website} is {new_webpass}')
                         print('-'*25)
 
-                    #elif new_user_input == 'sp':
-                     #if userdata_existing(user_signin.first_name)
-                        # length = user_input[user_signin.first_name]
-                        # print(f'You have {length} passwords:')
-                        # print('\n')
-                         
+                    elif new_user_input == 'sp':
+                     if userdata_existing(user_signin.user_id):
+                         length = user_input[user_signin.user_id]
+                         print(f'You have {length} passwords:')
+                         print('\n')
+                         my_user_data=0
+                         while my_user_data < length:
+                             get_pass = display_userdata(user_signin.user_id,my_user_data)
+                             print(f'{my_user_data+1}. {get_pass.website} ---- {get_pass.webpass}')
+                             my_user_data+=1
+
+                         print('\n Enter new command')
+                         print('-'*25)
+
+
+
 
 
 

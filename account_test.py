@@ -139,6 +139,15 @@ class TestUserData(unittest.TestCase):
         userdata_exists = UserData.existing_userdata("Michel")
         self.assertTrue(userdata_exists)
 
+    def test_copy_pass(self):
+        '''
+        Testing if password has been copied
+        '''
+        self.new_userdata.save_website()
+        UserData.copy_pass(1,"Michel")
+
+        self.assertEqual(self.new_userdata.webpass,pyperclip.paste())
+
 
 
     
