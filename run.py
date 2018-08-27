@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.6
 from account import Credentials
 from account import UserData
-import string, random, time
+import string, random
 
 def create_account(user_id,first_name,last_name,email,password):
     '''
@@ -170,7 +170,7 @@ def main():
                          elif show_index <user_input[user_signin.user_id]:
                                  copy_pass(user_signin.user_id,show_index)
                                  print('\n')
-                                 print(f'The password for {show_index+1} has been copied')
+                                 print(f'The password for index {show_index+1} has been copied')
                                  print('-'*25)
                      else:
                          print('No passwords')
