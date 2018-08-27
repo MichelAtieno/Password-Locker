@@ -170,7 +170,7 @@ def main():
                          elif show_index <user_input[user_signin.user_id]:
                                  copy_pass(user_signin.user_id,show_index)
                                  print('\n')
-                                 print(f'The password for index {show_index+1} has been copied')
+                                 print(f'The password for {new_website} at index {show_index+1} has been copied')
                                  print('-'*25)
                      else:
                          print('No passwords')
